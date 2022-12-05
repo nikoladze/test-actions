@@ -1,0 +1,8 @@
+name: Tests
+jobs:
+  doctests:
+    runs-on: python:latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip install pytest
+      - run: python -m doctest -v hello_world.py
