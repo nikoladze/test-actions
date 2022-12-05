@@ -1,9 +1,21 @@
 name: Tests
+
 on: [push]
+
 jobs:
-  doctests:
+  tests:
     runs-on: python:latest
     steps:
       - uses: actions/checkout@v3
-      - run: pip install pytest
-      - run: python -m doctest -v hello_world.py
+
+      - name: Install dependencies
+        run: pip install pytest
+
+      - name: Doctests
+        run: python -m doctest -v hello_world.py
+
+      - name: Unit Tests
+        run: python -m pytest tests
+
+      - name: Run Script
+        run: ./hello_world.py
